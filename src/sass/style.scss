@@ -1,0 +1,224 @@
+$ff: 'HankenGrotesk', sans-serif;
+$fs-16: 1rem;
+$fs-18: 1.125rem;
+$fs-24: 1.5rem;
+$fs-32: 2rem;
+$fs-56: 3.5rem;
+$fs-72: 4.5rem;
+$fw-regular: 500;
+$fw-bold: 700;
+$fw-bolder: 800;
+$breakpoint: 700px;
+
+// Primary
+$light-red: hsl(0, 100%, 67%);
+$orangey-yellow: hsl(39, 100%, 56%);
+$green-teal: hsl(166, 100%, 37%);
+$cobalt-blue: hsl(234, 85%, 45%);
+$light-red-tr: hsla(0, 100%, 67%, .2);
+$orangey-yellow-tr: hsla(39, 100%, 56%, .2);
+$green-teal-tr: hsla(166, 100%, 37%, .2);
+$cobalt-blue-tr: hsla(234, 85%, 45%, .2);
+
+// Neutral
+$white: hsl(0, 0%, 100%);
+$pale-blue: hsl(221, 100%, 96%);
+$light-lavender: hsl(241, 100%, 89%);
+$dark-gray-blue: hsl(224, 30%, 27%);
+
+// Gradient
+$light-slate-blue: hsl(252, 100%, 67%);
+$light-royal-blue: hsl(241, 81%, 54%);
+// Circle
+$violet-blue: hsla(256, 72%, 46%, 1);
+$persian-blue: hsla(241, 72%, 46%, 0);
+
+%skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+@mixin skill__title($color) {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  color: $color;
+}
+
+@font-face {
+  font-family: 'HankenGrotesk';
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('assets/fonts/HankenGrotesk-VariableFont_wght.ttf') 
+       format('truetype');
+}
+
+body {
+  font-family: $ff;
+  font-size: $fs-16;
+  font-weight: $fw-regular;
+  background-color: $pale-blue;
+
+  @media screen and (min-width: $breakpoint) {
+    font-size: $fs-18;
+  }
+}
+
+.card {
+  width: 100vw;
+  max-width: 736px;
+  display: flex;
+  flex-direction: column ;
+  text-align: center;
+  background-color: $white;
+  margin-bottom: 5rem;
+
+  @media screen and (min-width: $breakpoint) {
+    flex-direction: row;
+    margin: 5rem auto;
+    border-radius: 2rem;
+  }
+}
+
+.result {
+  width: 100%;
+  color: $pale-blue;
+  background: linear-gradient(0deg, $light-royal-blue 0%, $light-slate-blue 80%);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  &__title {
+    font-size: $fs-18;
+    font-weight: $fw-bold;
+    @media screen and (min-width: $breakpoint) {
+      font-size: $fs-24;
+    }
+  }
+  &__heading {
+    width: 9.75rem;
+    height: 9.75rem;
+    border-radius: 50%;
+    background: linear-gradient(0deg, $persian-blue 0%, $violet-blue  70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media screen and (min-width: $breakpoint) {
+      width: 12.5rem;
+      height: 12.5rem;
+    }
+  }
+  &__score {
+    color: $white;
+    font-size: $fs-56;
+    font-weight: $fw-bolder;
+    @media screen and (min-width: $breakpoint) {
+      font-size: $fs-72;
+    }
+  }
+  &__verdict {
+    font-size: $fs-24;
+    font-weight: $fw-bold;
+    color: $white;
+    @media screen and (min-width: $breakpoint) {
+      font-size: $fs-32;
+    }
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  @media screen and (min-width: $breakpoint) {
+    width: 50%;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding: 3.4rem;
+    gap: 2rem;
+  }
+}
+
+.summary {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  color: $dark-gray-blue;
+  
+  &__title {
+    font-size: $fs-18;
+    font-weight: $fw-bold;
+    @media screen and (min-width: $breakpoint) {
+      font-size: $fs-24;
+    }
+  }
+
+  &__score {
+    font-weight: $fw-bold
+  }
+
+  &__skills {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &--reaction {
+    @extend %skill;
+    background-color: $light-red-tr;
+    &__title {
+      @include skill__title($light-red);
+    }
+  }
+
+  &--memory {
+    @extend %skill;
+    background-color: $orangey-yellow-tr;
+    &__title {
+      @include skill__title($orangey-yellow);
+    }
+  }
+
+  &--verbal {
+    @extend %skill;
+    background-color: $green-teal-tr;
+    &__title {
+      @include skill__title($green-teal);
+    }
+  }
+
+  &--visual {
+    @extend %skill;
+    background-color: $cobalt-blue-tr;
+    &__title {
+      @include skill__title($cobalt-blue);
+    }
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    width: 50%;
+    border-radius: 2rem;
+    padding: 3.4rem;
+  }
+}
+
+.btn {
+  background-color: $dark-gray-blue;
+  color: $white;
+  font-size: $fs-18;
+  font-weight: $fw-bold;
+  padding: 1rem;
+  border-radius: 50px;
+  &:hover {
+    background: linear-gradient(0deg, $light-royal-blue 0%, $light-slate-blue 80%);
+    cursor: pointer;
+  }
+}
